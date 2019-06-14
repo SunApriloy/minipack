@@ -28,9 +28,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const babylon = require('babylon');
-const traverse = require('babel-traverse').default;
-const {transformFromAst} = require('babel-core');
+const babylon = require('@babel/parser');
+const traverse = require('@babel/traverse').default;
+const {transformFromAst} = require('@babel/core');
 
 let ID = 0;
 
@@ -84,7 +84,7 @@ function createAsset(filename) {
   // our code. We use `babel-preset-env` to transpile our code to something
   // that most browsers can run.
   const {code} = transformFromAst(ast, null, {
-    presets: ['env'],
+    presets: ['@babel/env'],
   });
 
   // Return all information about this module.
